@@ -1,6 +1,6 @@
 name: packageproxy
 version: 0.1
-summary: approx based package proxy
+summary: approx based package proxy running on port 9999
 description: approx based package proxy
 confinement: strict
 
@@ -15,13 +15,13 @@ parts:
     source: .
     plugin: make
     build-packages:
+      - debhelper
+      - dh-ocaml
       - fakeroot
       - libnethttpd-ocaml-dev
       - libpcre-ocaml-dev
       - libsha-ocaml-dev
       - ocaml-nox
-      - dh-ocaml
-      - debhelper
   approx:
     plugin: copy
     files:
@@ -29,11 +29,11 @@ parts:
         config.yaml: config.yaml
         config.sh: config.sh
     stage-packages:
-      - socat
-      - gawk
-      - sed
-      - curl
-      - xz-utils
       - bzip2
+      - curl
+      - gawk
       - gzip
+      - sed
+      - socat
+      - xz-utils
     after: [fixpaths]
