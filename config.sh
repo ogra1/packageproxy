@@ -3,7 +3,7 @@
 # parse a yaml file and turn it into an approx config
 #
 
-set -ex
+set -e
 
 # function to turn yaml into variables
 parse_yaml()
