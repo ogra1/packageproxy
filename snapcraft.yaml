@@ -1,0 +1,35 @@
+name: packageproxy
+version: 0.1
+summary: approx based package proxy
+description: approx based package proxy
+confinement: strict
+
+apps:
+  approx:
+    command: run-approx
+    daemon: simple
+    plugs: [network, network-bind]
+
+parts:
+  fixpaths:
+    source: .
+    plugin: make
+    build-packages:
+      - fakeroot
+      - libnethttpd-ocaml-dev
+      - libpcre-ocaml-dev
+      - libsha-ocaml-dev
+      - ocaml-nox
+      - dh-ocaml
+      - debhelper
+  approx:
+    plugin: copy
+    files:
+        run-approx: run-approx
+        config.yaml: config.yaml
+        config.sh: config.sh
+    stage-packages:
+      - socat
+      - gawk
+      - sed
+    after: [fixpaths]

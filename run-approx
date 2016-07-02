@@ -1,0 +1,21 @@
+#! /bin/sh
+
+set -e
+
+[ -e "$SNAP_DATA/var/cache/approx" ] || \
+	mkdir -p $SNAP_DATA/var/cache/approx
+
+[ -e "$SNAP_DATA/config.yaml" ] || \
+	cp $SNAP/config.yaml $SNAP_DATA/config.yaml
+
+$SNAP/config.sh >/dev/null 2>&1
+
+for sfx in allow deny; do
+    touch $SNAP_DATA/hosts.$sfx
+done
+
+PORT="$(grep port: $SNAP_DATA/config.yaml | sed 's/^.* //')"
+
+$SNAP/usr/bin/socat -W $SNAP_DATA/lockfile.lock \
+	TCP4-LISTEN:$PORT,reuseaddr,fork,tcpwrap=script,tcpwrap-etc=$SNAP_DATA \
+	EXEC:"$SNAP/usr/sbin/approx -c $SNAP_DATA/approx.conf",nofork,stderr

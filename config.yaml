@@ -1,0 +1,12 @@
+config:
+  packageproxy:
+    repos: [[ubuntu,http://archive.ubuntu.com/ubuntu],[ubuntu-ports,http://ports.ubuntu.com/ubuntu-ports]]
+    interval: 60
+    max_rate: unlimited
+    max_redirects: 5
+    pdiffs: false
+    offline: false
+    max_wait: 10
+    verbose: false
+    debug: false
+    port: 9999

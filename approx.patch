@@ -1,0 +1,28 @@
+diff -ruN approx.orig/url.ml approx/url.ml
+--- approx.orig/url.ml	2016-07-02 15:51:24.547192965 +0200
++++ approx/url.ml	2016-07-02 15:53:35.222899847 +0200
+@@ -56,7 +56,7 @@
+ 
+ let curl_command options url =
+   Printf.sprintf
+-    "/usr/bin/curl --fail --silent --header \"Pragma: no-cache\" %s %s %s"
++    "curl --fail --silent --header \"Pragma: no-cache\" %s %s %s"
+     rate_option (String.concat " " options) (quoted_string url)
+ 
+ let head_command = curl_command ["--head"]
+diff -ruN approx.orig/util.ml approx/util.ml
+--- approx.orig/util.ml	2016-07-02 15:51:24.547192965 +0200
++++ approx/util.ml	2016-07-02 15:52:52.861698192 +0200
+@@ -170,9 +170,9 @@
+ (* Decompression programs for supported compression formats *)
+ 
+ let decompressors =
+-  [".bz2", "/bin/bzcat";
+-   ".gz", "/bin/zcat";
+-   ".xz", "/usr/bin/xzcat"]
++  [".bz2", "bzcat";
++   ".gz", "zcat";
++   ".xz", "xzcat"]
+ 
+ let compressed_extensions = List.map fst decompressors
+
