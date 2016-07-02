@@ -1,6 +1,13 @@
 ## packageproxy
 
 The packageproxy snap ships a pre-confgured Approx install.
+In the default configuration you can point your sources.list to:
+
+        http://localhost:9999/ubuntu
+
+.. or replace "localhost" with the actual IP when accessing it from
+another host. If you use any of the Ubuntu Ports architectures,
+replace "/ubuntu" with "ubuntu-ports".
 
 Approx is an HTTP-based proxy server for Debian-style package archives.
 It fetches files from remote repositories on demand,
