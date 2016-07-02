@@ -32,4 +32,8 @@ parts:
       - socat
       - gawk
       - sed
+      - curl
+      - xz-utils
+      - bzip2
+      - gzip
     after: [fixpaths]
