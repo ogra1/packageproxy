@@ -18,16 +18,18 @@ parts:
       - debhelper
       - dh-ocaml
       - fakeroot
+      - git
       - libnethttpd-ocaml-dev
       - libpcre-ocaml-dev
       - libsha-ocaml-dev
       - ocaml-nox
+      - patch
   approx:
     plugin: copy
     files:
-        run-approx: run-approx
-        config.yaml: config.yaml
         config.sh: config.sh
+        config.yaml: config.yaml
+        run-approx: run-approx
     stage-packages:
       - bzip2
       - curl
