@@ -20,6 +20,7 @@ parts:
       - fakeroot
       - git
       - libnethttpd-ocaml-dev
+      - libounit-ocaml-dev
       - libpcre-ocaml-dev
       - libsha-ocaml-dev
       - ocaml-nox
