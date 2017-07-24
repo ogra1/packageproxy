@@ -1,5 +1,7 @@
 ## packageproxy
 
+[![Snap Status](https://build.snapcraft.io/badge/ogra1/packageproxy.svg)](https://build.snapcraft.io/user/ogra1/packageproxy)
+
 The packageproxy snap ships a pre-confgured Approx install.
 In the default configuration you can point your sources.list to:
 
