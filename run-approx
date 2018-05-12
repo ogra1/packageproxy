@@ -16,6 +16,10 @@ done
 
 PORT="$(grep port: $SNAP_DATA/config.yaml | sed 's/^.* //')"
 
+# make sure we kill the old instance first
+kill "$(cat $SNAP_DATA/lockfile.lock)"
+rm $SNAP_DATA/lockfile.lock
+
 $SNAP/usr/bin/socat -W $SNAP_DATA/lockfile.lock \
 	TCP4-LISTEN:$PORT,reuseaddr,fork,tcpwrap=script,tcpwrap-etc=$SNAP_DATA \
 	EXEC:"$SNAP/usr/sbin/approx -c $SNAP_DATA/approx.conf",nofork,stderr
