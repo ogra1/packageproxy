@@ -1,7 +1,7 @@
 all: build
 
 build:
-	git clone git://git.debian.org/git/pkg-ocaml-maint/packages/approx.git
+	git clone https://salsa.debian.org/ocaml-team/approx.git
 	( cd approx; patch -p1 <../approx.patch; fakeroot debian/rules binary)
 
 install:
