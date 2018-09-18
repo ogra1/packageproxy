@@ -82,6 +82,7 @@ EOF
 \$max_wait $config_packageproxy_max_wait
 \$verbose $config_packageproxy_verbose
 \$debug $config_packageproxy_debug
+\$curl_path $SNAP/usr/bin/curl
 EOF
 
     chmod 0640 $SNAP_DATA/approx.conf
